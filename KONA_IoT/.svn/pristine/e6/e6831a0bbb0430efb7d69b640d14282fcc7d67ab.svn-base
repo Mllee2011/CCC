@@ -1,0 +1,13 @@
+package com.konai.konaiot;
+
+import javacard.framework.*;
+
+public class IoT_Util {
+
+	public static final void check_CLA(byte cla, byte value){
+		if(cla != value){
+			ISOException.throwIt(ISO7816.SW_CLA_NOT_SUPPORTED);
+		}
+	}
+	
+}

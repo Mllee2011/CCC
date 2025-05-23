@@ -1,0 +1,10 @@
+#package specification
+#Fri May 23 13:34:28 KST 2025
+masktools-version=3.0
+com.konai.konaiot.KONA_IoT-aid=0F4B4F4E4101
+com.konai.konaiot-minor=0
+com.konai.konaiot-clazzes=com.konai.konaiot.Constants com.konai.konaiot.IoT_Util com.konai.konaiot.KONA_IoT com.konai.konaiot.Secp256r1 com.konai.konaiot.SecureKeyObjectRecord com.konai.konaiot.SecureObjectRecord
+jcop-packages=com.konai.konaiot
+com.konai.konaiot-base=internal
+com.konai.konaiot-aid=0F4B4F4E41
+com.konai.konaiot-major=1

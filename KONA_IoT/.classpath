@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="D:/Mydata/WK/workspace/KONA_IoT/SLC37_CryptoX_20250605.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Mydata/WK/workspace/KONA_IoT/SLI37.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.ibm.bluez.jcop.eclipse.containers.cardconfig/com.ibm.bluez.jcop.eclipse.cardconfigs.custom;com.ibm.bluez.jcop.eclipse.cardapis.jc301;com.ibm.bluez.jcop.eclipse.cardapis.jc222;com.ibm.bluez.jcop.eclipse.cardapis.gp211"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

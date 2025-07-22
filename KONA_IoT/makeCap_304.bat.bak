@@ -1,0 +1,14 @@
+REM set Java Card Home
+set JC_HOME=C:\JavaCardKit\JCDK3.0.4_ClassicEdition
+
+
+REM make cap
+call %JC_HOME%\bin\converter -out EXP -exportpath %JC_HOME%\api_export_files -classdir .\bin -d .\cap -applet 0x0F:0x4B:0x4F:0x4E:0x41:0x01 com.konai.konaiot.KONA_IoT  com.konai.konaiot 0x0F:0x4B:0x4F:0x4E:0x41 1.0
+
+REM copy binary to cap
+copy cap\com\konai\konaiot\javacard cap
+
+REM delete package
+rmdir /s /q cap\com
+
+pause

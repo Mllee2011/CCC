@@ -1,0 +1,962 @@
+// converted by version  [v3.0.4]
+// on Wed Apr 30 18:35:17 KST 2025
+
+.package com/konai/konaiot {
+	.aid 0xF:0x4B:0x4F:0x4E:0x41;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xA0:0x0:0x0:0x1:0x51:0x0 1.5;		//org/globalplatform
+	}
+
+	.applet {
+		0xF:0x4B:0x4F:0x4E:0x41:0x1 KONA_IoT;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef SecureObjectRecord[] KONA_IoT/records;
+		// 1
+		instanceFieldRef byte KONA_IoT/currentPhase;
+		// 2
+		instanceFieldRef short KONA_IoT/allocated_records;
+		// 3
+		instanceFieldRef byte[] SecureObjectRecord/data;
+		// 4
+		instanceFieldRef short SecureObjectRecord/dataLength;
+		// 5
+		instanceFieldRef byte SecureObjectRecord/status;
+		// 6
+		instanceFieldRef short SecureObjectRecord/objectId;
+		// 7
+		instanceFieldRef byte[] SecureObjectRecord/acl;
+		// 8
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 9
+		staticFieldRef 3.2 KONA_IoT/gpSecureChannel;
+		// 10
+		staticFieldRef byte[] KONA_IoT/buf_tmp;
+		// 11
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 12
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 13
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 14
+		.classRef SecureObjectRecord;
+		// 15
+		staticMethodRef KONA_IoT/checkPhase(B)S;
+		// 16
+		staticMethodRef 2.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	2.14;
+
+		// 17
+		staticMethodRef KONA_IoT/setPhase(B)V;
+		// 18
+		.classRef KONA_IoT;
+		// 19
+		staticMethodRef KONA_IoT/<init>([BS)V;
+		// 20
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 21
+		.classRef 1.7;		// javacard/framework/ISOException
+		// 22
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 23
+		staticMethodRef KONA_IoT/iot_select(Ljavacard/framework/APDU;[B)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 24
+		staticMethodRef KONA_IoT/getRandom(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 25
+		staticMethodRef KONA_IoT/initalizeupdate_02(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 26
+		virtualMethodRef KONA_IoT/externalauthenticate_02(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 27
+		staticMethodRef KONA_IoT/storeData(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 28
+		staticMethodRef KONA_IoT/getData(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 29
+		staticMethodRef KONA_IoT/getResponse(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 30
+		virtualMethodRef 1.7.1()S;		// getReason()S
+		// 31
+		.classRef 1.5;		// javacard/framework/CardRuntimeException
+		// 32
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 33
+		staticMethodRef 3.3.4()Lorg/globalplatform/SecureChannel;;		// org/globalplatform/GPSystem.getSecureChannel()Lorg/globalplatform/SecureChannel;
+			.descriptor	Lorg/globalplatform/SecureChannel;	3.2;
+
+		// 34
+		.classRef 3.2;		// org/globalplatform/SecureChannel
+		// 35
+		virtualMethodRef 1.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 36
+		virtualMethodRef 2.14.1([BSS)V;		// generateData([BSS)V
+		// 37
+		virtualMethodRef 1.10.7()S;		// setOutgoing()S
+		// 38
+		virtualMethodRef 1.10.9(S)V;		// setOutgoingLength(S)V
+		// 39
+		virtualMethodRef 1.10.4(SS)V;		// sendBytes(SS)V
+		// 40
+		staticMethodRef 1.16.4([BS)S;		// javacard/framework/Util.getShort([BS)S
+		// 41
+		virtualMethodRef 1.10.5([BSS)V;		// sendBytesLong([BSS)V
+		// 42
+		staticMethodRef 1.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 43
+		staticMethodRef 1.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 44
+		staticMethodRef SecureObjectRecord/search([Lcom/konai/konaiot/SecureObjectRecord;SS)S;
+		// 45
+		staticMethodRef IoT_Util/check_CLA(BB)V;
+		// 46
+		staticMethodRef KONA_IoT/check_user_phase()S;
+		// 47
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 48
+		staticMethodRef SecureObjectRecord/<init>()V;
+		// 49
+		staticFieldRef byte KONA_IoT/intanceNO;
+		// 50
+		staticFieldRef 2.14 KONA_IoT/rng;
+		// 51
+		staticFieldRef byte[] KONA_IoT/TransientData;
+		// 52
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+	}
+
+	.class public Constants 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte OK = 90;		// B
+			public static final byte NOK = -91;		// B
+			public static final short S_OK = 23130;		// S
+			public static final short S_NOK = -23131;		// S
+			public static final byte STATE_ACTIVE = 0;		// B
+			public static final byte STATE_INACTIVE = 1;		// B
+			public static final byte STATE_PERSO = 2;		// B
+			public static final byte STATUS_VALID = 90;		// B
+			public static final byte STATUS_DELETED = -91;		// B
+			public static final byte INS_SELECT_AID = -92;		// B
+			public static final byte INS_GET_RANDOM = -124;		// B
+			public static final byte INS_INITIALIZE_UPDATE = 80;		// B
+			public static final byte INS_EXTERNAL_AUTHENTICATE = -126;		// B
+			public static final byte INS_SE_SESSION = 16;		// B
+			public static final byte INS_STORE_DATA = -30;		// B
+			public static final byte INS_PUT_KEY = -40;		// B
+			public static final byte INS_GENERATE_KEYPAIR = 70;		// B
+			public static final byte INS_SIGN_CDATA = 42;		// B
+			public static final byte INS_VERIFY_SIGNATURE = 32;		// B
+			public static final byte INS_GET_DATA = -54;		// B
+			public static final byte INS_SET_LOCK_STATE = -12;		// B
+			public static final byte INS_COMPACT_STORAGE = -2;		// B
+			public static final byte INS_ENCRYPT_DECRYPT = -80;		// B
+			public static final byte INS_GET_RESPONSE = -64;		// B
+			public static final short RECORD_NUMBER = 30;		// S
+			public static final short LEN_BUF_CERT = 1500;		// S
+			public static final short OFF_SM_DATA = 0;		// S
+			public static final short LEN_SM_STATE = 1;		// S
+			public static final short OFF_OBJECT_SIZE = 1;		// S
+			public static final short LEN_OBJECT_SIZE = 2;		// S
+			public static final short OFF_OFF_RESPONSE_START = 3;		// S
+			public static final short LEN_OFF_RESPONSE_START = 2;		// S
+			public static final short TRANSIENT_DATA_SIZE = 5;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 8;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public IoT_Util 1 extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static final check_CLA(BB)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_0;
+					sload_1;
+					if_scmpeq L2;
+				L1:	sspush 28160;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	return;
+		}
+
+		.method public <init>()V 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 8;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public KONA_IoT 2 extends 1.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			 SecureObjectRecord[] records 0;		// [Lcom/konai/konaiot/SecureObjectRecord;
+			private byte currentPhase 1;		// B
+			private short allocated_records 2;		// S
+			protected static byte[] buf_tmp 0;		// [B
+			private static byte intanceNO;		// B
+			private static byte[] TransientData;		// [B
+			private static 2.14 rng;		// Ljavacard/security/RandomData;
+			private static 3.2 gpSecureChannel;		// Lorg/globalplatform/SecureChannel;
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			uninstall()V;
+			externalauthenticate_02(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.18 { 		// javacard/framework/AppletEvent
+				8;		// uninstall()V
+			}
+
+		}
+
+		.method private final check_user_phase()S {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sconst_0;
+					invokespecial 15;		// com/konai/konaiot/KONA_IoT.checkPhase(B)S
+					sreturn;
+		}
+
+		.method private final iot_select(Ljavacard/framework/APDU;[B)V {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_2;
+					sconst_0;
+					baload;
+					sconst_0;
+					invokestatic 45;		// com/konai/konaiot/IoT_Util.check_CLA(BB)V
+					aload_0;
+					invokespecial 46;		// com/konai/konaiot/KONA_IoT.check_user_phase()S
+					sspush 23130;
+					if_scmpeq L2;
+				L1:	return;
+				L2:	return;
+		}
+
+		.method public uninstall()V 8 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_b 49;		// byte com/konai/konaiot/KONA_IoT.intanceNO
+					sconst_1;
+					if_scmpne L2;
+				L1:	aconst_null;
+					putstatic_a 50;		// reference com/konai/konaiot/KONA_IoT.rng
+					aconst_null;
+					putstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					aload_0;
+					aconst_null;
+					putfield_a 0;		// reference com/konai/konaiot/KONA_IoT.records
+					aconst_null;
+					putstatic_a 9;		// reference com/konai/konaiot/KONA_IoT.gpSecureChannel
+					aconst_null;
+					putstatic_a 10;		// reference com/konai/konaiot/KONA_IoT.buf_tmp
+					sconst_0;
+					putstatic_b 49;		// byte com/konai/konaiot/KONA_IoT.intanceNO
+					goto L3;
+				L2:	getstatic_b 49;		// byte com/konai/konaiot/KONA_IoT.intanceNO
+					sconst_1;
+					ssub;
+					s2b;
+					putstatic_b 49;		// byte com/konai/konaiot/KONA_IoT.intanceNO
+				L3:	return;
+		}
+
+		.method public <init>([BS)V 0 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 11;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					sconst_1;
+					putfield_b 1;		// byte com/konai/konaiot/KONA_IoT.currentPhase
+					sload_2;
+					aload_1;
+					sload_2;
+					baload;
+					sadd;
+					aload_1;
+					sload_2;
+					aload_1;
+					sload_2;
+					baload;
+					sadd;
+					sconst_1;
+					sadd;
+					baload;
+					sadd;
+					sconst_2;
+					sadd;
+					sstore_3;
+					aload_1;
+					sload_3;
+					baload;
+					stableswitch L2 0 0 L1;
+				L1:	goto L3;
+				L2:	sspush 27012;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					ifnonnull L5;
+				L4:	sconst_5;
+					sconst_2;
+					invokestatic 13;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sspush 1500;
+					sconst_2;
+					invokestatic 13;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 10;		// reference com/konai/konaiot/KONA_IoT.buf_tmp
+				L5:	aload_0;
+					bspush 30;
+					anewarray 14;		// com/konai/konaiot/SecureObjectRecord
+					putfield_a 0;		// reference com/konai/konaiot/KONA_IoT.records
+					aload_0;
+					sconst_0;
+					putfield_s 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+					sconst_2;
+					invokestatic 16;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putstatic_a 50;		// reference com/konai/konaiot/KONA_IoT.rng
+					aload_0;
+					sconst_2;
+					invokespecial 17;		// com/konai/konaiot/KONA_IoT.setPhase(B)V
+					getstatic_b 49;		// byte com/konai/konaiot/KONA_IoT.intanceNO
+					sconst_1;
+					sadd;
+					s2b;
+					putstatic_b 49;		// byte com/konai/konaiot/KONA_IoT.intanceNO
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 18;		// com/konai/konaiot/KONA_IoT
+					dup;
+					aload_0;
+					sload_1;
+					invokespecial 19;		// com/konai/konaiot/KONA_IoT.<init>([BS)V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 20;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 22;		// getBuffer()[B
+					astore_2;
+					aload_2;
+					sconst_1;
+					baload;
+					sstore_3;
+					aload_2;
+					sconst_0;
+					dup2;
+					baload;
+					bspush -4;
+					sand;
+					bastore;
+				L1:	sload_3;
+					bspush -92;
+					if_scmpne L4;
+				L2:	aload_0;
+					aload_1;
+					aload_2;
+					invokespecial 23;		// com/konai/konaiot/KONA_IoT.iot_select(Ljavacard/framework/APDU;[B)V
+				L3:	return;
+				L4:	sload_3;
+					slookupswitch L18 13 -126 L7 -124 L5 -64 L17 -54 L14 -40 L10 -30 L13 -12 L15 -2 L16 16 L8 32 L12 42 L11 70 L9 80 L6;
+				L5:	aload_0;
+					aload_1;
+					invokespecial 24;		// com/konai/konaiot/KONA_IoT.getRandom(Ljavacard/framework/APDU;)V
+					goto L21;
+				L6:	aload_0;
+					aload_1;
+					invokespecial 25;		// com/konai/konaiot/KONA_IoT.initalizeupdate_02(Ljavacard/framework/APDU;)V
+					goto L21;
+				L7:	aload_0;
+					aload_1;
+					invokevirtual 26;		// externalauthenticate_02(Ljavacard/framework/APDU;)V
+					goto L21;
+				L8:	goto L21;
+				L9:	goto L21;
+				L10:	goto L21;
+				L11:	goto L21;
+				L12:	goto L21;
+				L13:	aload_0;
+					aload_1;
+					invokespecial 27;		// com/konai/konaiot/KONA_IoT.storeData(Ljavacard/framework/APDU;)V
+					goto L21;
+				L14:	aload_0;
+					aload_1;
+					invokespecial 28;		// com/konai/konaiot/KONA_IoT.getData(Ljavacard/framework/APDU;)V
+					goto L21;
+				L15:	goto L21;
+				L16:	goto L21;
+				L17:	aload_0;
+					aload_1;
+					invokespecial 29;		// com/konai/konaiot/KONA_IoT.getResponse(Ljavacard/framework/APDU;)V
+					goto L21;
+				L18:	sspush 27904;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L19:	goto L21;
+				L20:	astore 4;
+					aload 4;
+					invokevirtual 30;		// getReason()S
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L21:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L3 L20 21;
+				L4 L19 L20 21;
+			}
+		}
+
+		.method private initalizeupdate_02(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 32;		// setIncomingAndReceive()S
+					pop;
+				L1:	invokestatic 33;		// org/globalplatform/GPSystem.getSecureChannel()Lorg/globalplatform/SecureChannel;
+					putstatic_a 9;		// reference com/konai/konaiot/KONA_IoT.gpSecureChannel
+					aload_1;
+					sconst_5;
+					getstatic_a 9;		// reference com/konai/konaiot/KONA_IoT.gpSecureChannel
+					aload_1;
+					invokeinterface 2 34 0;		// org/globalplatform/SecureChannel
+					invokevirtual 35;		// setOutgoingAndSend(SS)V
+				L2:	goto L4;
+				L3:	astore_2;
+					sspush 27013;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 31;
+			}
+		}
+
+		.method public externalauthenticate_02(Ljavacard/framework/APDU;)V 9 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 32;		// setIncomingAndReceive()S
+					pop;
+					getstatic_a 9;		// reference com/konai/konaiot/KONA_IoT.gpSecureChannel
+					aload_1;
+					invokeinterface 2 34 0;		// org/globalplatform/SecureChannel
+					pop;
+					return;
+		}
+
+		.method private getRandom(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 22;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 32;		// setIncomingAndReceive()S
+					sstore_3;
+					getstatic_a 50;		// reference com/konai/konaiot/KONA_IoT.rng
+					aload_2;
+					sconst_0;
+					sload_3;
+					invokevirtual 36;		// generateData([BSS)V
+					aload_1;
+					invokevirtual 37;		// setOutgoing()S
+					pop;
+					aload_1;
+					sload_3;
+					s2b;
+					invokevirtual 38;		// setOutgoingLength(S)V
+					aload_1;
+					sconst_0;
+					sload_3;
+					invokevirtual 39;		// sendBytes(SS)V
+					return;
+		}
+
+		.method private getResponse(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 37;		// setOutgoing()S
+					sstore_2;
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_3;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sstore_3;
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_1;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sload_3;
+					ssub;
+					sload_2;
+					ssub;
+					sstore 4;
+					sload 4;
+					ifle L4;
+				L1:	aload_1;
+					sload_2;
+					invokevirtual 38;		// setOutgoingLength(S)V
+					aload_1;
+					getstatic_a 10;		// reference com/konai/konaiot/KONA_IoT.buf_tmp
+					sload_3;
+					sload_2;
+					invokevirtual 41;		// sendBytesLong([BSS)V
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_3;
+					sload_3;
+					sload_2;
+					sadd;
+					invokestatic 42;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sload 4;
+					sspush 255;
+					if_scmple L3;
+				L2:	sspush 24832;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+					goto L7;
+				L3:	sspush 24832;
+					sload 4;
+					sadd;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+					goto L7;
+				L4:	sload 4;
+					ifne L6;
+				L5:	getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_1;
+					sconst_4;
+					sconst_0;
+					invokestatic 43;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_1;
+					sload_2;
+					invokevirtual 38;		// setOutgoingLength(S)V
+					aload_1;
+					getstatic_a 10;		// reference com/konai/konaiot/KONA_IoT.buf_tmp
+					sload_3;
+					sload_2;
+					invokevirtual 41;		// sendBytesLong([BSS)V
+					return;
+				L6:	sspush 26368;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	return;
+		}
+
+		.method private getData(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 22;		// getBuffer()[B
+					astore_2;
+					aload_2;
+					sconst_2;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sstore_3;
+					getfield_a_this 0;		// reference com/konai/konaiot/KONA_IoT.records
+					getfield_s_this 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+					sload_3;
+					invokestatic 44;		// com/konai/konaiot/SecureObjectRecord.search([Lcom/konai/konaiot/SecureObjectRecord;SS)S
+					sstore 4;
+					sload 4;
+					sconst_m1;
+					if_scmpne L2;
+				L1:	sspush 27272;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	getfield_a_this 0;		// reference com/konai/konaiot/KONA_IoT.records
+					sload 4;
+					aaload;
+					astore 5;
+					aload 5;
+					getfield_a 3;		// reference com/konai/konaiot/SecureObjectRecord.data
+					sconst_0;
+					getstatic_a 10;		// reference com/konai/konaiot/KONA_IoT.buf_tmp
+					sconst_0;
+					aload 5;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					invokestatic 47;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_1;
+					invokevirtual 37;		// setOutgoing()S
+					sstore 6;
+					aload 5;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					sload 6;
+					ssub;
+					sstore 7;
+					sload 7;
+					ifle L6;
+				L3:	getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_1;
+					aload 5;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					invokestatic 42;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sload 7;
+					sspush 255;
+					if_scmple L5;
+				L4:	sspush 24832;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+					goto L7;
+				L5:	sspush 24832;
+					sload 7;
+					sadd;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+					goto L7;
+				L6:	aload_1;
+					aload 5;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					invokevirtual 38;		// setOutgoingLength(S)V
+					aload_1;
+					getstatic_a 10;		// reference com/konai/konaiot/KONA_IoT.buf_tmp
+					sconst_0;
+					aload 5;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					invokevirtual 41;		// sendBytesLong([BSS)V
+				L7:	return;
+		}
+
+		.method private storeData(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 22;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 32;		// setIncomingAndReceive()S
+					sspush 255;
+					sand;
+					sstore_3;
+					sconst_5;
+					sstore 4;
+					aload_2;
+					sconst_3;
+					baload;
+					sstore 5;
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_1;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sstore 6;
+					sload 6;
+					ifne_w L4;
+				L1:	getfield_s_this 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+					bspush 30;
+					if_scmplt L3;
+				L2:	sspush 27268;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	new 14;		// com/konai/konaiot/SecureObjectRecord
+					dup;
+					invokespecial 48;		// com/konai/konaiot/SecureObjectRecord.<init>()V
+					astore 7;
+					aload 7;
+					bspush 90;
+					putfield_b 5;		// byte com/konai/konaiot/SecureObjectRecord.status
+					aload 7;
+					aload_2;
+					sload 4;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					putfield_s 6;		// short com/konai/konaiot/SecureObjectRecord.objectId
+					sinc 4 2;
+					aload_2;
+					sload 4;
+					aload 7;
+					getfield_a 7;		// reference com/konai/konaiot/SecureObjectRecord.acl
+					sconst_0;
+					sconst_3;
+					invokestatic 52;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sinc 4 3;
+					aload 7;
+					aload_2;
+					sload 4;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					putfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					sinc 4 2;
+					aload 7;
+					aload 7;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					newarray 11;
+					putfield_a 3;		// reference com/konai/konaiot/SecureObjectRecord.data
+					aload_2;
+					sload 4;
+					aload 7;
+					getfield_a 3;		// reference com/konai/konaiot/SecureObjectRecord.data
+					sconst_0;
+					sload_3;
+					bspush 7;
+					ssub;
+					invokestatic 52;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 0;		// reference com/konai/konaiot/KONA_IoT.records
+					getfield_s_this 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+					aload 7;
+					aastore;
+					aload 7;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					sload_3;
+					ssub;
+					bspush 7;
+					sadd;
+					sstore 6;
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_1;
+					sload 6;
+					invokestatic 42;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					goto L7;
+				L4:	getfield_a_this 0;		// reference com/konai/konaiot/KONA_IoT.records
+					getfield_s_this 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+					aaload;
+					astore 7;
+					aload 7;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					sload 6;
+					ssub;
+					sstore 8;
+					sload 8;
+					sload_3;
+					sadd;
+					aload 7;
+					getfield_s 4;		// short com/konai/konaiot/SecureObjectRecord.dataLength
+					if_scmple L6;
+				L5:	sspush 26368;
+					invokestatic 12;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_2;
+					sload 4;
+					aload 7;
+					getfield_a 3;		// reference com/konai/konaiot/SecureObjectRecord.data
+					sload 8;
+					sload_3;
+					invokestatic 52;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload 6;
+					sload_3;
+					ssub;
+					sstore 6;
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_1;
+					sload 6;
+					invokestatic 42;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+				L7:	sload 6;
+					ifne L9;
+				L8:	aload_0;
+					dup;
+					getfield_s 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+					sconst_1;
+					sadd;
+					putfield_s 2;		// short com/konai/konaiot/KONA_IoT.allocated_records
+				L9:	return;
+		}
+
+		.method private setPhase(B)V {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_0;
+					sload_1;
+					bastore;
+					aload_0;
+					sload_1;
+					putfield_b 1;		// byte com/konai/konaiot/KONA_IoT.currentPhase
+					return;
+		}
+
+		.method private checkPhase(B)S {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_0;
+					getfield_b_this 1;		// byte com/konai/konaiot/KONA_IoT.currentPhase
+					bastore;
+					getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_0;
+					baload;
+					sload_1;
+					if_scmpeq L2;
+				L1:	sspush -23131;
+					sreturn;
+				L2:	sspush 23130;
+					sreturn;
+		}
+
+		.method private check_state(B)S {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 51;		// reference com/konai/konaiot/KONA_IoT.TransientData
+					sconst_0;
+					baload;
+					sload_1;
+					if_scmpne L2;
+				L1:	sspush 23130;
+					sreturn;
+				L2:	sspush -23131;
+					sreturn;
+		}
+
+	}
+
+	.class public SecureObjectRecord 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public byte status 0;		// B
+			public short objectId 1;		// S
+			public short dataLength 2;		// S
+			public byte[] acl 3;		// [B
+			public byte[] data 4;		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 8;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_3;
+					newarray 11;
+					putfield_a 7;		// reference com/konai/konaiot/SecureObjectRecord.acl
+					return;
+		}
+
+		.method public static search([Lcom/konai/konaiot/SecureObjectRecord;SS)S 1 {
+			.stack 2;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_3;
+					goto L6;
+				L1:	aload_0;
+					sload_3;
+					aaload;
+					ifnull L5;
+				L2:	aload_0;
+					sload_3;
+					aaload;
+					getfield_s 6;		// short com/konai/konaiot/SecureObjectRecord.objectId
+					sload_2;
+					if_scmpne L5;
+				L3:	aload_0;
+					sload_3;
+					aaload;
+					getfield_b 5;		// byte com/konai/konaiot/SecureObjectRecord.status
+					bspush 90;
+					if_scmpne L5;
+				L4:	sload_3;
+					sreturn;
+				L5:	sinc 3 1;
+				L6:	sload_3;
+					sload_1;
+					if_scmplt L1;
+				L7:	sconst_m1;
+					sreturn;
+		}
+
+	}
+
+}
